@@ -32,12 +32,18 @@ const app = new Vue({
     },
 
     methods: {
-        downImage(){
+        _downImage(){
             if(this.currentIndex === images.length - 1){
                 this.currentIndex = 0 ;
             } else{
-                this.currentIndex++;
+                this.currentIndex++; 
+                
             }
+        },
+
+        downImage(){
+            this._downImage();
+            this.startSlideTimer();
         },
 
         upImage(){
@@ -46,6 +52,22 @@ const app = new Vue({
             } else{
                 this.currentIndex--;
             }
+            // this.startSlideTimer();
         },
+
+        changeImage(index){
+            this.currentIndex = index;
+        },
+
+        startSlideTimer(){
+            this.autoplayInterval = setInterval(() => {
+                this._downImage();
+            }, 3000);
+        },
+
+        mounted(){
+            this.startSlideTimer();
+        }
+       
     },
 })

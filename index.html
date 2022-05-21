@@ -18,8 +18,8 @@
                 <!-- utilizzo una variabile esterna per tener conto dell immagine in questo caso currentIndex  -->
                 <img :src="images[currentIndex].src" :alt="images[currentIndex].title">
                 <div class="text">
-                    <h3>Lorem</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.</p>
+                    <h3>{{images[currentIndex].title}}</h3>
+                    <p>{{images[currentIndex].text}}</p>
                 </div>
             </div> 
            
@@ -28,7 +28,8 @@
             <div class="prev" @click="upImage"></div>
 
             <!-- elimino i div e ciclo con v-for per stampare tutte le immagini  -->
-            <div class="thumb " v-for="image in images">
+            <!-- if fatto nella classe class con operatore ternario , tenendo conto dell'indice corrente attivo la classe  -->
+            <div class="thumb"  v-for="(image, index) in images" :class="currentIndex === index ? 'active' : null" @click="changeImage(index)">
                 <img :src="image.src" :alt="image.title">
             </div> 
            
