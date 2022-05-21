@@ -14,9 +14,9 @@
    <div class="container" id="app">
         <div class="items">
             
-            <div class="item active">
+            <div class="item active" @mouseover="clearSlider" @mouseleave = "mounted">
                 <!-- utilizzo una variabile esterna per tener conto dell immagine in questo caso currentIndex  -->
-                <img :src="images[currentIndex].src" :alt="images[currentIndex].title " @mouseover="clearSlider" >
+                <img :src="images[currentIndex].src" :alt="images[currentIndex].title "  >
                 <div class="text">
                     <h3>{{images[currentIndex].title}}</h3>
                     <p>{{images[currentIndex].text}}</p>
@@ -24,7 +24,7 @@
             </div> 
            
         </div>
-        <div class="thumbs">
+        <div class="thumbs" @mouseover="clearSlider" @mouseleave = "mounted">
             <div class="prev" @click="upImage"></div>
 
             <!-- elimino i div e ciclo con v-for per stampare tutte le immagini  -->
