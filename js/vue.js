@@ -1,6 +1,7 @@
 const app = new Vue({
     el: '#app',
     data: {
+        currentIndex : 0,
         images : [
             {
                 src: 'img/01.jpg',
@@ -31,6 +32,20 @@ const app = new Vue({
     },
 
     methods: {
+        downImage(){
+            if(this.currentIndex === images.length - 1){
+                this.currentIndex = 0 ;
+            } else{
+                this.currentIndex++;
+            }
+        },
 
+        upImage(){
+            if(this.currentIndex === 0 ){
+                this.currentIndex = images.length - 1 ;
+            } else{
+                this.currentIndex--;
+            }
+        },
     },
 })

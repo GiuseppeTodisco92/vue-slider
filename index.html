@@ -15,7 +15,8 @@
         <div class="items">
             
             <div class="item active">
-                <img src="./img/01.jpg" alt="">
+                <!-- utilizzo una variabile esterna per tener conto dell immagine in questo caso currentIndex  -->
+                <img :src="images[currentIndex].src" :alt="images[currentIndex].title">
                 <div class="text">
                     <h3>Lorem</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.</p>
@@ -24,7 +25,7 @@
            
         </div>
         <div class="thumbs">
-            <div class="prev"></div>
+            <div class="prev" @click="upImage"></div>
 
             <!-- elimino i div e ciclo con v-for per stampare tutte le immagini  -->
             <div class="thumb " v-for="image in images">
@@ -32,7 +33,7 @@
             </div> 
            
             
-            <div class="next"></div>
+            <div class="next" @click="downImage"></div>
         </div>
    </div>
    <script src="js/vue.js"></script>
