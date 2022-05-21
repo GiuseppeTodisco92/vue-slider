@@ -67,7 +67,11 @@ const app = new Vue({
 
         mounted(){
             this.startSlideTimer();
-        }
+        },
+
+        clearSlider(){
+            clearInterval(this.autoplayInterval);
+        },
        
     },
 })

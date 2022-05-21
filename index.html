@@ -16,7 +16,7 @@
             
             <div class="item active">
                 <!-- utilizzo una variabile esterna per tener conto dell immagine in questo caso currentIndex  -->
-                <img :src="images[currentIndex].src" :alt="images[currentIndex].title">
+                <img :src="images[currentIndex].src" :alt="images[currentIndex].title " @mouseover="clearSlider" >
                 <div class="text">
                     <h3>{{images[currentIndex].title}}</h3>
                     <p>{{images[currentIndex].text}}</p>
