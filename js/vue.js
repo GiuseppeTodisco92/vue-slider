@@ -2,6 +2,7 @@ const app = new Vue({
     el: '#app',
     data: {
         currentIndex : 0,
+        autoplayID : null,
         images : [
             {
                 src: 'img/01.jpg',
@@ -32,46 +33,36 @@ const app = new Vue({
     },
 
     methods: {
-        _downImage(){
-            if(this.currentIndex === images.length - 1){
-                this.currentIndex = 0 ;
-            } else{
-                this.currentIndex++; 
-                
-            }
-        },
-
+       
         downImage(){
-            this._downImage();
-            this.startSlideTimer();
+            this.currentIndex === images.length - 1 ? this.currentIndex = 0 : this.currentIndex++;
+            
+            // this._downImage();
+            // this.startSlideTimer();
         },
 
         upImage(){
-            if(this.currentIndex === 0 ){
-                this.currentIndex = images.length - 1 ;
-            } else{
-                this.currentIndex--;
-            }
-            // this.startSlideTimer();
+            this.currentIndex === 0 ? this.currentIndex = images.length - 1 : this.currentIndex--;
         },
 
         changeImage(index){
             this.currentIndex = index;
         },
 
-        startSlideTimer(){
-            this.autoplayInterval = setInterval(() => {
-                this._downImage();
-            }, 3000);
-        },
-
-        mounted(){
-            this.startSlideTimer();
-        },
-
         clearSlider(){
-            clearInterval(this.autoplayInterval);
+            clearInterval(this.autoplayID);
         },
+
+        startAutoplay(){
+            this.autoplayID = setInterval(() => {
+                this.downImage();
+            }, 2000);
+        }
+        
        
     },
+
+    created(){
+        this.startAutoplay();
+    }
 })

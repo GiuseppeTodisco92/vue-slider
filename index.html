@@ -11,10 +11,10 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-   <div class="container" id="app">
+   <div class="container" id="app"  >
         <div class="items">
             
-            <div class="item active" @mouseover="clearSlider" @mouseleave = "mounted">
+            <div class="item active" @mouseover="clearSlider" @mouseleave = "startAutoplay"  >
                 <!-- utilizzo una variabile esterna per tener conto dell immagine in questo caso currentIndex  -->
                 <img :src="images[currentIndex].src" :alt="images[currentIndex].title "  >
                 <div class="text">
@@ -24,7 +24,7 @@
             </div> 
            
         </div>
-        <div class="thumbs" @mouseover="clearSlider" @mouseleave = "mounted">
+        <div class="thumbs" @mouseover="clearSlider" @mouseleave = "startAutoplay" >
             <div class="prev" @click="upImage"></div>
 
             <!-- elimino i div e ciclo con v-for per stampare tutte le immagini  -->
